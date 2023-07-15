@@ -57,4 +57,3 @@ def jeux():
 
     print("Tu as reussi a retenir ", y, " mots")
 
-jeux()

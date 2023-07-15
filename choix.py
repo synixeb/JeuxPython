@@ -27,7 +27,7 @@ def choix(rep):
 def jeux():
     print("Bienvenue dans le programme de choix du jeux")
     while True:
-        if input("Voulez-vous jouer ? (O/N) : ") == "O":
+        if input("Voulez-vous jouer ? (o pour oui) : ") == "o":
             print("Bienvenue dans le programme de choix du jeux")
             print("Voici la liste des jeux : ")
             print("1 : Memoire")
@@ -44,4 +44,4 @@ def jeux():
         else:
             print("Au revoir")
             break
-jeux()
+

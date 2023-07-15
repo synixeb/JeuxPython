@@ -55,4 +55,3 @@ def jeux():
                 print("Lettres bien placées : ", bp)
                 print("Lettres mal placées : ", mp)
 
-jeux()

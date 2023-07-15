@@ -49,4 +49,3 @@ def jeux():
 
     else:
         print("je n'ai pas compris")
-jeux()

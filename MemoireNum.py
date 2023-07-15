@@ -32,4 +32,3 @@ def jeux():
             print("Bravo tu as reussi")
             i += 1
     print("Tu as reussi a retenir ", i, " chiffres")
-jeux()

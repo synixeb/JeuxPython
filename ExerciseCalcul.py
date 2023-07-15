@@ -52,5 +52,3 @@ def jeux():
             calculMental()
         else:
             break
-
-jeux()
