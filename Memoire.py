@@ -11,11 +11,29 @@ if chanceNouveauMot > 10:
 longueurMot = 5
 
 def genererMots():
-    mot = ""
-    for i in range(0, longueurMot):
-        mot += chr(random.randint(97, 122))
+    mot = []
+    mot = ajoutConsonne(mot)
+    for i in range(0, longueurMot - 1):
+        if random.randint(1, 4) == 1:
+            mot = ajoutConsonne(mot)
+        else:
+            mot = ajoutVoyelle(mot)
     ListeMots.append(mot)
     return mot
+
+def ajoutConsonne(mot):
+    consonne = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n","p", "q", "r", "s", "t", "v", "w", "x", "z"]
+    mot.append(consonne[random.randint(0, len(consonne) - 1)])
+    return mot
+
+def ajoutVoyelle(mot):
+    voyelle = ["a", "e", "i", "o", "u", "y"]
+    mot.append(voyelle[random.randint(0, len(voyelle) - 1)])
+    return mot
+
+def ConvertListetoString(mot):
+    Mot = "".join(mot)
+    return Mot
 
 def ancienMot():
     mot = ListeMots[random.randint(0, len(ListeMots) - 1)]
@@ -28,6 +46,7 @@ def jeux():
     while erreur == 0:
         if random.randint(1, 10) <= chanceNouveauMot:
             mot = ancienMot()
+            mot = ConvertListetoString(mot)
             print(mot)
             rep = input("Ce mot est-il nouveau ? (o/n) : ")
             if rep == "o":
@@ -42,6 +61,7 @@ def jeux():
                 print("Erreur, veuillez entrer o ou n")
         else:
             mot = genererMots()
+            mot = ConvertListetoString(mot)
             print(mot)
             rep = input("Ce mot est-il nouveau ? (o/n) : ")
             if rep == "o":
@@ -57,3 +77,4 @@ def jeux():
 
     print("Tu as reussi a retenir ", y, " mots")
 
+jeux()
