@@ -1,10 +1,9 @@
 import random
 
-ListeMots = ["voiture", "ordinateur", "python", "programmation", "pendu", "boucle", "variable", "fonction", "liste"]
+ListeMots = ["voiture", "ordinateur", "python", "programmation", "pendu", "boucle", "variable", "fonction", "liste", "dictionnaire", "classe", "objet", "argument", "parametre", "condition"]
 
 mot = random.choice(ListeMots)
 ListeLettre = []
-LettresUtilisees = []
 
 def error(nb):
     print ("")
@@ -70,25 +69,34 @@ def afficher_lettre(lettre, ListeLettre, LettresTrouvees):
     return LettresTrouvees
 
 def jeux():
+    LettresUtilisees = []
+    MotsEssaye = []
     erreur = 0
     LettresTrouvees = []
-
-    print(LettresTrouvees)
+    
     for i in range (0, len(mot)):
         LettresTrouvees.append("_")
-
+    
     print ("jeux du pendu")
-    print (mot)
+
+    print(LettresTrouvees)
     
     while erreur < 6:
         print ("")
         print("Lettres utilisées :", LettresUtilisees)
-        lettre = input("entrez une lettre : ")
+        print("Mots essayés :", MotsEssaye)
+        lettre = input("entrez une lettre ou un mot(pour donner un reponse) : ")
         if len(lettre) > 1:
             print ("c'est un mot")
             if lettre == mot:
                 print ("vous avez gagné")
-                exit()
+                break
+            else:
+                MotsEssaye.append(lettre)
+                print ("ce n'est pas dans le bon mot")
+                erreur = erreur + 1
+                print ("il vous reste", 6 - erreur, "erreur(s)")
+                error(erreur)
         else:
             if lettre in mot:
                 print ("la lettre est dans le mot")
@@ -101,4 +109,3 @@ def jeux():
                 print ("il vous reste", 6 - erreur, "erreur(s)")
                 error(erreur)
     
-jeux()
