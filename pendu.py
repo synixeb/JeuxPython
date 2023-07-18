@@ -1,14 +1,13 @@
 import random
 
-ListeMots = ["voiture", "ordinateur", "python", "programmation", "pendu", "boucle", "variable", "fonction", "liste", "dictionnaire", "classe", "objet", "argument", "parametre", "condition"]
-
-mot = random.choice(ListeMots)
-ListeLettre = []
-
-def error(nb):
+def error(nb,mot):
     print ("")
     print ("")
     if nb == 1:
+        print ("")
+        print ("")
+        print ("")
+        print ("")
         print ("____")
     elif nb == 2:
         print (" |")
@@ -43,14 +42,16 @@ def error(nb):
         print (" |     -|-")
         print (" |     / \\")
         print ("____")
-
+        print ("")
+        print ("vous avez perdu")
+        print ("le mot était", mot)
+        print ("")
 
 def str_to_list(mot):
     liste = []
     for i in range (0, len(mot)):
         liste.append(mot[i])
     return liste
-ListeLettre = str_to_list(mot)
 
 def list_to_str(liste):
     mot = ""
@@ -69,6 +70,10 @@ def afficher_lettre(lettre, ListeLettre, LettresTrouvees):
     return LettresTrouvees
 
 def jeux():
+    ListeMots = ["cage", "noir", "fraise", "voiture", "baleine", "pomme", "chien", "souris", "cheuveux", "pantalon", "chemise", "chaussure", "pied", "main", "bras", "tête", "oeil", "nez", "bouche", "oreille", "doigt", "jambe", "genou", "coude", "épaule", "poignet", "poing", "ventre", "dos", "cou", "fesse", "cuisse", "talon", "orteil", "pouce", "annulaire", "majeur", "index", "auriculation", "pouce", "poumon", "coeur", "foie", "rein", "estomac", "intestin", "cerf", "biche", "renard", "loup", "ours", "tigre", "lion", "girafe", "zèbre", "singe", "chimpanzé", "gorille", "éléphant", "rhinocéros", "hippopotame", "crocodile", "serpent", "tortue", "lac", "jaune", "mort", "vivant", "port", "porc", "vache", "poule", "coq", "poussin", "pigeon", "mouette", "canard", "oie", "chèvre", "organe", "matraque", "pistolet", "fusil", "mitraillette", "grenade", "bombe", "missile", "avion", "hélicoptère", "char", "tank", "sous-marin", "bateau", "navire", "voilier", "oiseau", "Balle", "forge", "ile", "plage", "mer", "trace", "piste", "poussière", "sable", "pierre", "roche", "montagne", "colline", "plaine", "forêt", "arbre", "fleur", "herbe", "champ", "champignon", "nuage", "ciel", "étoile", "soleil", "lune", "planète", "univers", "galaxie", "système solaire", "étoile filante"]
+    ListeLettre = []
+    mot = ListeMots[random.randint(0, len(ListeMots) - 1)]
+
     LettresUtilisees = []
     MotsEssaye = []
     erreur = 0
@@ -76,7 +81,7 @@ def jeux():
     
     for i in range (0, len(mot)):
         LettresTrouvees.append("_")
-    
+    ListeLettre = str_to_list(mot)
     print ("jeux du pendu")
 
     print(LettresTrouvees)
@@ -96,16 +101,24 @@ def jeux():
                 print ("ce n'est pas dans le bon mot")
                 erreur = erreur + 1
                 print ("il vous reste", 6 - erreur, "erreur(s)")
+                print ("")
+                print (LettresTrouvees)
+                print ("")
                 error(erreur)
         else:
             if lettre in mot:
                 print ("la lettre est dans le mot")
                 LettresTrouvees = afficher_lettre(lettre, ListeLettre, LettresTrouvees)
+                print ("")
                 print (LettresTrouvees)
+                print ("")
             else:
                 LettresUtilisees.append(lettre)
                 print ("la lettre n'est pas dans le mot")
                 erreur = erreur + 1
                 print ("il vous reste", 6 - erreur, "erreur(s)")
-                error(erreur)
+                print ("")
+                print (LettresTrouvees)
+                print ("")
+                error(erreur, mot)
     
